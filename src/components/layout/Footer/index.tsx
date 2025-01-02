@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import './footer.css';
 
 const Footer = () => {
   return (
-    <footer className="flex justify-center bg-gray-700 p-12">
+    <footer className="footer">
       <Link href="/">
-        <Image src="ad_logo.svg" alt="Logo Apply Digital" width={170} height={44.09} />
+        <Image src="ad_logo.svg" alt="Logo Apply Digital" width={170} height={45} />
       </Link>
     </footer>
   );
