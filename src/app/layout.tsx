@@ -6,6 +6,8 @@ import RecoilContextProvider from '@/context/RecoilContextProvider';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import './globals.css';
+import { Suspense } from 'react';
+import Loader from '@/components/common/Loader';
 
 const archivo = Archivo({ subsets: ['latin'] });
 
