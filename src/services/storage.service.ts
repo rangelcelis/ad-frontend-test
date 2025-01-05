@@ -5,8 +5,12 @@ import { Game } from '@/types/game.type';
 const STORAGE_KEY = 'products';
 
 const get = () => {
-  const storage = localStorage.getItem(STORAGE_KEY) || '[]';
-  return JSON.parse(storage) as Game[];
+  if (typeof window !== 'undefined') {
+    const storage = localStorage.getItem(STORAGE_KEY) || '[]';
+    return JSON.parse(storage) as Game[];
+  }
+
+  return [];
 };
 
 const save = (game: Game) => {
