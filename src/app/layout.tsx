@@ -1,14 +1,20 @@
 import type { Metadata } from 'next';
 import { Archivo } from 'next/font/google';
+import RecoilContextProvider from '@/context/RecoilContextProvider';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import { meta } from '@/config/metadata';
 import './globals.css';
 
-const inter = Archivo({ subsets: ['latin'] });
+const archivo = Archivo({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Apply Digital Test',
-  description: 'Frontend development test for Apply Digital',
+  title: meta.title,
+  description: meta.description,
+  authors: {
+    name: meta.author,
+    url: meta.url,
+  },
 };
 
 export default function RootLayout({
@@ -18,10 +24,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
+      <body className={archivo.className}>
+        <RecoilContextProvider>
+          <Header />
+          {children}
+          <Footer />
+        </RecoilContextProvider>
       </body>
     </html>
   );
