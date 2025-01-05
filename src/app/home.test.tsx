@@ -20,7 +20,7 @@ vi.mock('next/navigation', async () => {
 });
 
 describe('Home Page initial render', () => {
-  test('should render all components OK', async () => {
+  test('should render all components OK', () => {
     render(<HomePage />, { wrapper: RecoilRoot });
     expect(screen.getByRole('heading', { level: 1, name: /Top Sellers/i })).toBeDefined();
     expect(screen.getByTestId('select-genre')).toBeDefined();
