@@ -1,10 +1,11 @@
 'use client';
 
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { Game } from '@/types/game.type';
 import { formatAmount } from '@/utils/format-number';
-import { cartSelector, catalogAtom, updateCartSelector } from '@/context/state';
+import { catalogAtom, cartSelector } from '@/context/state';
 import Button from '@/components/common/Button';
+import { Cart } from '@/types/cart.type';
 
 type HomeCatalogProps = {
   onLoadMoreClick: () => void;
@@ -12,11 +13,11 @@ type HomeCatalogProps = {
 
 const HomeCatalog = ({ onLoadMoreClick }: HomeCatalogProps) => {
   const catalog = useRecoilValue(catalogAtom);
-  const cart = useRecoilValue(cartSelector);
-  const updateCart = useSetRecoilState(updateCartSelector);
+  const [cart, setCart] = useRecoilState(cartSelector);
 
   const handleGameButtonClick = (game: Game) => {
-    updateCart(game);
+    const newCart: Cart = { ...cart, games: [game] };
+    setCart(newCart);
   };
 
   const isInCart = (gameId: string): boolean => {

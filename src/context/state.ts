@@ -2,7 +2,7 @@ import { atom, selector } from 'recoil';
 import { Cart } from '@/types/cart.type';
 import { Catalog } from '@/types/catalog.type';
 import { Game } from '@/types/game.type';
-import storage from '@/services/storage.service';
+import storageService from '@/services/storage.service';
 
 export const catalogAtom = atom<Catalog>({
   key: 'catalogAtom',
@@ -14,7 +14,7 @@ export const catalogAtom = atom<Catalog>({
 
 const productsAtom = atom<Game[]>({
   key: 'productsAtom',
-  default: storage.get(),
+  default: storageService.get(),
 });
 
 export const cartSelector = selector<Cart>({
@@ -28,25 +28,21 @@ export const cartSelector = selector<Cart>({
       total: cart.reduce((acc, game) => acc + game.price, 0),
     };
   },
-});
-
-export const updateCartSelector = selector({
-  key: 'updateCartSelector',
-  get: ({ get }) => {
-    return get(cartSelector);
-  },
-  set: ({ get, set }, game: Game) => {
+  set: ({ get, set }, newCart) => {
     const cart = get(productsAtom);
+
+    const { games } = newCart as Cart;
+    const [game] = games;
 
     if (cart.some((item) => item.id === game.id)) {
       set(
         productsAtom,
         cart.filter((item) => item.id !== game.id)
       );
-      storage.remove(game.id);
+      storageService.remove(game.id);
     } else {
       set(productsAtom, [...cart, game]);
-      storage.save(game);
+      storageService.save(game);
     }
   },
 });

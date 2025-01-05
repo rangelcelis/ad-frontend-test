@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { getGames } from '@/services/catalog.service';
+import catalogService from '@/services/catalog.service';
 import { catalogAtom } from '@/context/state';
 import HomeHeader from './components/HomeHeader';
 import HomeCatalog from './components/HomeCatalog';
@@ -21,7 +21,7 @@ const HomePage = () => {
 
   const fetchData = async (page: number, filter: string) => {
     setIsLoading(true);
-    const { games, currentPage, totalPages } = await getGames(page, filter);
+    const { games, currentPage, totalPages } = await catalogService.getGames(page, filter);
 
     router.replace(`${pathname}?genre=${filter}&page=${page}`, { scroll: false });
 

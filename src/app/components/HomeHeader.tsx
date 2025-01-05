@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { getGenres } from '@/services/catalog.service';
+import catalogService from '@/services/catalog.service';
 import Select from '@/components/common/Select';
 
 type HomeHeaderProps = {
@@ -14,7 +14,7 @@ const HomeHeader = ({ filter, onFilterChange }: HomeHeaderProps) => {
 
   useEffect(() => {
     async function fetchData() {
-      const genres = await getGenres();
+      const genres = await catalogService.getGenres();
       setFilterOptions(genres);
     }
 

@@ -1,15 +1,15 @@
 import { useSetRecoilState } from 'recoil';
-import Image from 'next/image';
 import { formatAmount } from '@/utils/format-number';
 import { Game } from '@/types/game.type';
-import { updateCartSelector } from '@/context/state';
+import { cartSelector } from '@/context/state';
 import { Cart } from '@/types/cart.type';
 
 const Items = ({ cart }: { cart: Cart }) => {
-  const updateCart = useSetRecoilState(updateCartSelector);
+  const updateCart = useSetRecoilState(cartSelector);
 
   const hanldeRemoveFromCart = (game: Game) => {
-    updateCart(game);
+    const newCart = { ...cart, games: [game] };
+    updateCart(newCart);
   };
 
   return (
