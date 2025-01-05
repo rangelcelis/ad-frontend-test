@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, test } from 'vitest';
-import Button from './Button';
+import Button from '../Button';
 
 describe('Button Compoment render', () => {
   test('should render all elements', () => {
     render(<Button onClick={() => {}}>Label</Button>);
-    expect(screen.getByRole('button', { name: /Label/i })).toBeDefined();
-    screen.debug();
+
+    const button = screen.getByRole('button', { name: /Label/i });
+    expect(button).toBeEnabled();
   });
 });

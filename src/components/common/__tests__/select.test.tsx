@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, test } from 'vitest';
-import Select from './Select';
+import Select from '../Select';
 
 describe('Select Compoment render', () => {
   test('should render all elements', () => {
@@ -15,7 +14,7 @@ describe('Select Compoment render', () => {
     );
 
     const select = screen.getByTestId('select-test-select');
-    expect(select).toBeDefined();
+    expect(select).toBeEnabled();
     expect(select).toHaveProperty('value', 'A');
   });
 });
