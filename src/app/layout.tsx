@@ -5,6 +5,8 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { meta } from '@/config/metadata';
 import './globals.css';
+import { Suspense } from 'react';
+import Loader from '@/components/common/Loader';
 
 const archivo = Archivo({ subsets: ['latin'] });
 
@@ -26,9 +28,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={archivo.className}>
         <RecoilContextProvider>
-          <Header />
-          {children}
-          <Footer />
+          <Suspense fallback={<div>Loading content...</div>}>
+            <Header />
+            {children}
+            <Footer />
+          </Suspense>
         </RecoilContextProvider>
       </body>
     </html>
