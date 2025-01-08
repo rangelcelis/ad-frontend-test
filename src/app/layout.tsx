@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import { Archivo } from 'next/font/google';
 import { meta } from '@/config/metadata';
 import RecoilContextProvider from '@/context/RecoilContextProvider';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import Header from '@/app/ui/layout/Header';
+import Footer from '@/app/ui/layout/Footer';
 import './globals.css';
 
 const archivo = Archivo({ subsets: ['latin'] });

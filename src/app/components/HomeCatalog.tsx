@@ -4,7 +4,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { Game } from '@/types/game.type';
 import { formatAmount } from '@/utils/format-number';
 import { catalogAtom, cartSelector } from '@/context/state';
-import Button from '@/components/common/Button';
+import Button from '@/app/ui/common/Button';
 import { Cart } from '@/types/cart.type';
 
 type HomeCatalogProps = {

@@ -1,4 +1,4 @@
-import Button from '@/components/common/Button';
+import Button from '@/app/ui/common/Button';
 import { Cart } from '@/types/cart.type';
 import { formatAmount } from '@/utils/format-number';
 

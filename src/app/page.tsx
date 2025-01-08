@@ -7,7 +7,7 @@ import catalogService from '@/services/catalog.service';
 import { catalogAtom } from '@/context/state';
 import HomeHeader from './components/HomeHeader';
 import HomeCatalog from './components/HomeCatalog';
-import Loader from '@/components/common/Loader';
+import Loader from '@/app/ui/common/Loader';
 
 const HomePage = () => {
   const [isLoading, setIsLoading] = useState(false);

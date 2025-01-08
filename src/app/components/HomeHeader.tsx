@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import catalogService from '@/services/catalog.service';
-import Select from '@/components/common/Select';
+import Select from '@/app/ui/common/Select';
 
 type HomeHeaderProps = {
   filter: string;
