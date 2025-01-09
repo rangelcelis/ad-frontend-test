@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Footer from '../../footer';
+import Footer from '../../ui/footer';
 
 describe('Footer Compoment render', () => {
   test('should render all elements', () => {

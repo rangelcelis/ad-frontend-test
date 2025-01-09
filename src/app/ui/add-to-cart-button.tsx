@@ -9,7 +9,7 @@ export const AddToCartButton = ({ game }: { game: Game }) => {
 
   useEffect(() => {
     setLabel(isInCart(game.id) ? 'Remove' : 'Add to cart');
-  }, []);
+  }, [game.id]);
 
   function handleButtonClick() {
     const exist = isInCart(game.id);

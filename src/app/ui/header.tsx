@@ -9,7 +9,7 @@ const Header = () => {
           <Image src="logo.svg" alt="GamerShop Logo" width={148} height={26} priority />
         </Link>
         <Link href="/cart">
-          <img src="icons/cart.svg" alt="Menu Option Cart" width="100%" />
+          <Image src="icons/cart.svg" alt="Menu Option Cart" width={20} height={22} />
         </Link>
       </nav>
     </header>

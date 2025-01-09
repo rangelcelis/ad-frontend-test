@@ -1,24 +1,12 @@
-import { RecoilRoot } from 'recoil';
-import { render, screen, waitFor } from '@testing-library/react';
 import HomePage from '@/app/page';
-
-jest.mock('next/navigation', () => {
-  return {
-    useRouter: jest.fn(() => ({
-      push: jest.fn(),
-      replace: jest.fn(),
-    })),
-    useSearchParams: jest.fn(() => ({
-      get: jest.fn(),
-    })),
-    usePathname: jest.fn(),
-  };
-});
+import { render, screen, waitFor } from '@testing-library/react';
 
 describe('Home Page initial render', () => {
   test('should render all components OK', async () => {
+    const searchParams = Promise.resolve({ genre: '', page: '' });
+
     await waitFor(() => {
-      render(<HomePage />, { wrapper: RecoilRoot });
+      render(<HomePage searchParams={searchParams} />);
     });
 
     expect(screen.getByRole('heading', { level: 1, name: /Top Sellers/i })).toBeDefined();

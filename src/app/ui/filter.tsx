@@ -3,12 +3,10 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 type FilterProps = {
-  name: string;
-  label: string;
   options: string[];
 };
 
-const Filter = ({ name, label, options }: FilterProps) => {
+const Filter = ({ options }: FilterProps) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
@@ -23,14 +21,14 @@ const Filter = ({ name, label, options }: FilterProps) => {
 
   return (
     <>
-      <label htmlFor={name}>{label}</label>
+      <label htmlFor="filter">Genre</label>
       <span>|</span>
       <select
-        name={name}
-        value={searchParams.get('genre')?.toString()}
+        name="filter"
         className="w-full md:max-w-xs"
+        aria-label="Genre"
+        value={searchParams.get('genre')?.toString()}
         onChange={handleSelectChange}
-        data-testid={`select-${name}`}
       >
         <option value="all">All</option>
         {options.map((opt: string) => (

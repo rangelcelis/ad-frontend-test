@@ -9,8 +9,6 @@ export async function GET(request: Request) {
 
   let games = allGames;
 
-  console.log('Me llaman...');
-
   if (genre) {
     games = games.filter((game) => game.genre.toLowerCase() === genre.toLowerCase());
   }
@@ -18,7 +16,7 @@ export async function GET(request: Request) {
   if (page < 1 || isNaN(page)) page = 1;
 
   // Mock a delay to simulate a real API
-  await delay(4000);
+  await delay(2000);
 
   const fromIndex = (page - 1) * ITEMS_PER_PAGE;
   const toIndex = page * ITEMS_PER_PAGE;
