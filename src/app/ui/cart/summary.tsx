@@ -5,7 +5,7 @@ import { Game } from '@/types/game.type';
 import { formatAmount } from '@/utils/format-number';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import Empty from './Empty';
+import Empty from './empty';
 
 const Summary = () => {
   const [cart, setCart] = useState<Game[]>([]);
