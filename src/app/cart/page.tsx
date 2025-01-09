@@ -1,16 +1,13 @@
-'use client';
-
-import { useRecoilValue } from 'recoil';
+import Summary from '@/app/ui/cart/summary';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { cartSelector } from '@/context/state';
-import Summary from './components/Summary';
-import Items from './components/Items';
-import Empty from './components/Empty';
+
+export const metadata: Metadata = {
+  title: 'Cart',
+};
 
 const CartPage = () => {
-  const cart = useRecoilValue(cartSelector);
-
   return (
     <section className="grid px-6 2xl:px-32">
       <div className="py-4 xl:py-6">
@@ -22,22 +19,7 @@ const CartPage = () => {
         </Link>
       </div>
 
-      <div className="grid py-8 xl:py-12 gap-12">
-        <div className="grid gap-4">
-          <h1 className="text-xl font-bold">Your Cart</h1>
-          <span>{cart.items} items</span>
-        </div>
-
-        {/* Empty Cart */}
-        {cart.items === 0 ? (
-          <Empty />
-        ) : (
-          <div className="grid md:grid-cols-2 gap-20 items-start">
-            <Items cart={cart} />
-            <Summary cart={cart} />
-          </div>
-        )}
-      </div>
+      <Summary />
     </section>
   );
 };

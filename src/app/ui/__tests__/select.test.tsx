@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import Select from '../Select';
+import Filter from '../../filter';
 
 describe('Select Compoment render', () => {
   test('should render all elements', () => {
     render(
-      <Select
+      <Filter
         label="Test Select"
         name="test-select"
         onChange={() => {}}

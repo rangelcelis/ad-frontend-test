@@ -4,7 +4,7 @@ import { Game } from '@/types/game.type';
 
 const STORAGE_KEY = 'products';
 
-const get = () => {
+export const getCart = () => {
   if (typeof window !== 'undefined') {
     const storage = localStorage.getItem(STORAGE_KEY) || '[]';
     return JSON.parse(storage) as Game[];
@@ -13,22 +13,19 @@ const get = () => {
   return [];
 };
 
-const save = (game: Game) => {
-  const products = get();
+export const addToCart = (game: Game) => {
+  const products = getCart();
   products.push(game);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
 };
 
-const remove = (gameId: string) => {
-  const products = get();
+export const removeFromCart = (gameId: string) => {
+  const products = getCart();
   const filteredProducts = products.filter((item) => item.id !== gameId);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(filteredProducts));
 };
 
-const storage = {
-  save,
-  get,
-  remove,
+export const isInCart = (gameId: string) => {
+  const products = getCart();
+  return products.some((game) => game.id === gameId);
 };
-
-export default storage;
