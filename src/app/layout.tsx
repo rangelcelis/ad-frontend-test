@@ -10,11 +10,9 @@ import Loader from './ui/loader';
 const archivo = Archivo({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: {
-    template: '%s | GamerShop',
-    default: 'GamerShop',
-  },
+  title: meta.title,
   description: meta.description,
+  keywords: meta.keywords,
   authors: {
     name: meta.author,
     url: meta.url,

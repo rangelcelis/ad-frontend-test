@@ -1,11 +1,6 @@
 import { fetchData } from '@/services/catalog.service';
-import { Metadata } from 'next';
 import CatalogSection from './ui/catalog-section';
 import FilterSection from './ui/filter-section';
-
-export const metadate: Metadata = {
-  title: 'Catalog',
-};
 
 const HomePage = async (props: {
   searchParams?: Promise<{
