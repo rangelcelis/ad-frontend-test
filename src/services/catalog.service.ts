@@ -1,4 +1,4 @@
-const getGames = async (page: number, genre: string) => {
+export const fetchData = async (page: number, genre: string) => {
   const url = new URL(process.env.NEXT_PUBLIC_API_BASE_URL || '');
   url.searchParams.append('page', page.toString());
 
@@ -12,21 +12,7 @@ const getGames = async (page: number, genre: string) => {
       'Content-Type': 'application/json',
     },
   });
-  const { games, totalPages, currentPage } = await response.json();
+  const { games, totalPages, currentPage, availableFilters } = await response.json();
 
-  return { games, totalPages, currentPage };
+  return { games, totalPages, currentPage, availableFilters };
 };
-
-const getGenres = async () => {
-  const response = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL || '');
-  const { availableFilters } = await response.json();
-
-  return availableFilters;
-};
-
-const catalog = {
-  getGames,
-  getGenres,
-};
-
-export default catalog;

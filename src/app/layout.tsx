@@ -1,17 +1,18 @@
-import { Suspense } from 'react';
+import Footer from '@/app/ui/footer';
+import Header from '@/app/ui/header';
+import { meta } from '@/config/metadata';
 import type { Metadata } from 'next';
 import { Archivo } from 'next/font/google';
-import { meta } from '@/config/metadata';
-import RecoilContextProvider from '@/context/RecoilContextProvider';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import { Suspense } from 'react';
 import './globals.css';
+import Loader from './ui/loader';
 
 const archivo = Archivo({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: meta.title,
   description: meta.description,
+  keywords: meta.keywords,
   authors: {
     name: meta.author,
     url: meta.url,
@@ -26,13 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={archivo.className}>
-        <RecoilContextProvider>
-          <Suspense fallback={<div>Loading content...</div>}>
-            <Header />
-            {children}
-            <Footer />
-          </Suspense>
-        </RecoilContextProvider>
+        <Header />
+        <Suspense fallback={<Loader />}>{children}</Suspense>
+        <Footer />
       </body>
     </html>
   );

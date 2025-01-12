@@ -1,7 +1,10 @@
 export const meta = {
-  title: 'Apply Digital Test',
-  description: 'Frontend development test for Apply Digital',
-  version: 0.1,
+  title: {
+    template: '%s | GamerShop',
+    default: 'Catalog | GamerShop',
+  },
+  description: 'GamerShop, the frontend development test for Apply Digital.',
+  keywords: ['Gamer', 'Games', 'Videogames', 'Store'],
   author: 'Alejandro Rangel Celis',
   url: 'rangel.celis@gmail.com',
 };

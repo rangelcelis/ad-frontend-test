@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Header from '../Header';
+import Header from '../../ui/header';
 
 describe('Header Compoment render', () => {
   test('should render all elements', () => {
